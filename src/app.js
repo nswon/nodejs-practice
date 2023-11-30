@@ -1,5 +1,6 @@
 import express from "express";
 import posts from "./controllers/post-controller.js";
+import members from "./controllers/member-controller.js";
 
 class App {
   #app;
@@ -16,6 +17,7 @@ class App {
 
   #configRoutes() {
     this.#app.use("/posts", posts);
+    this.#app.use("/members", members);
   }
 
   start(port) {
