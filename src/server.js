@@ -2,7 +2,9 @@ import App from "./app.js";
 import dotenv from "dotenv";
 dotenv.config();
 
-const PORT = process.env.PORT;
+function main() {
+  const app = new App();
+  app.start();
+}
 
-const app = new App();
-app.start(PORT);
+main();

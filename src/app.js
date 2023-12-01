@@ -1,28 +1,28 @@
 import express from "express";
-import posts from "./controllers/post-controller.js";
-import members from "./controllers/member-controller.js";
+import postsRouter from "./routers/post-router.js";
+import membersRouter from "./routers/member-router.js";
 
 class App {
   #app;
 
   constructor() {
     this.#app = express();
-    this.#useParseBody();
-    this.#configRoutes();
+    this.#useParsingBody();
+    this.#mountRouters();
   }
 
-  #useParseBody() {
+  #useParsingBody() {
     this.#app.use(express.json());
   }
 
-  #configRoutes() {
-    this.#app.use("/posts", posts);
-    this.#app.use("/members", members);
+  #mountRouters() {
+    this.#app.use("/posts", postsRouter);
+    this.#app.use("/members", membersRouter);
   }
 
-  start(port) {
-    this.#app.listen(port, () => {
-      console.log("starting server with", port);
+  start() {
+    this.#app.listen(process.env.PORT, () => {
+      console.log("start server");
     });
   }
 }

@@ -4,7 +4,7 @@ export function createPost(req, res) {
   const { title, content } = req.body;
 
   connection.query(
-    `INSERT INTO Post (id, title, content) VALUES (2, '${title}', '${content}')`,
+    `INSERT INTO Post (id, title, content) VALUES (3, '${title}', '${content}')`,
     (error, rows) => {
       if (error) throw error;
       res.end();
