@@ -1,6 +1,5 @@
 import express from "express";
-import postsRouter from "./routers/post-router.js";
-import membersRouter from "./routers/member-router.js";
+import rootRouter from "./routers/index.js";
 
 class App {
   #app;
@@ -8,16 +7,15 @@ class App {
   constructor() {
     this.#app = express();
     this.#useParsingBody();
-    this.#mountRouters();
+    this.#mountRouter();
   }
 
   #useParsingBody() {
     this.#app.use(express.json());
   }
 
-  #mountRouters() {
-    this.#app.use("/posts", postsRouter);
-    this.#app.use("/members", membersRouter);
+  #mountRouter() {
+    this.#app.use(rootRouter);
   }
 
   start() {
