@@ -1,21 +1,13 @@
 import express from "express";
-import rootRouter from "./routers/index.js";
+import router from "./core/router.js";
 
 class App {
   #app;
 
   constructor() {
     this.#app = express();
-    this.#useParsingBody();
-    this.#mountRouter();
-  }
-
-  #useParsingBody() {
     this.#app.use(express.json());
-  }
-
-  #mountRouter() {
-    this.#app.use(rootRouter);
+    this.#app.use(router);
   }
 
   start() {

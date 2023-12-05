@@ -1,5 +1,5 @@
 import express from "express";
-import * as commentService from "../domain/comment/commentService.js";
+import * as commentService from "./comment-service.js";
 
 const commentsRouter = express.Router();
 
